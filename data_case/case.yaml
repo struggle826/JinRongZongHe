@@ -1,0 +1,76 @@
+#服务器异常，系统提示报错
+- data: {"mobilephone":"15229807878","pwd":"123456","regname":"lemo"}
+  expect: {"code":20102,"data":{},"msg":"服务器异常","status":0}
+#不输入手机号时，注册失败
+- data: {"mobilephone":" ","pwd":"123456","regname":"lemo"}
+  expect: {"code":20103,"data":{},"msg":"参数错误：参数不能为空","status":0}
+#不输入密码时，注册失败
+- data: {"mobilephone":"15229807878","pwd":" ","regname":"lemo"}
+  expect: {"code":20103,"data":{},"msg":"参数错误：参数不能为空","status":0}
+#不输入手机号和密码时，注册失败
+- data: {"mobilephone":" ","pwd":" ","regname":"lemo"}
+  expect: {"code":20103,"data":{},"msg":"参数错误：参数不能为空","status":0}
+#输入5位密码，注册失败
+- data: {"mobilephone":"15229807878","pwd":"12345","regname":"lemo"}
+  expect: {"code":20108,"data":{},"msg":"密码长度必须为6～18位","status":0}
+#输入19位密码，注册失败
+- data: {"mobilephone":"15229807878","pwd":"1234567891234567890","regname":"lemo"}
+  expect: {"code":20108,"data":{},"msg":"密码长度必须为6～18位","status":0}
+#输入10位手机号，注册失败
+- data: {"mobilephone":"1522980787","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#输入12位手机号，注册失败
+- data: {"mobilephone":"152298078789","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#输入包含特殊字符的手机号，注册失败
+- data: {"mobilephone":"1522980787*","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#输入不合法手机号，注册失败
+- data: {"mobilephone":"12345612345","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#输入正确手机号和密码，注册失败
+- data: {"mobilephone":"15229807373","pwd":"123456","regname":"lemo"}
+  expect: {"code":20110,"data":{},"msg":"手机号码已被注册","status":0}
+#输入正确的手机号和密码，输入超长昵称，注册失败
+- data: {"mobilephone":"15229807575","pwd":"123456","regname":"lemozxcvbnmasdfghjkl"}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+#输入正确的手机号和密码，输入昵称，注册成功
+- data: {"mobilephone":"15229807575","pwd":"123456","regname":"lemo"}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+#输入正确的手机号和密码，不输入昵称，注册成功
+- data: {"mobilephone":"15229807575","pwd":"123456","regname":" "}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+#输入正确的手机号，6位密码，注册成功
+- data: {"mobilephone":"15229807575","pwd":"123456","regname":"lemo"}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+#输入正确的手机号，18位密码，注册成功
+- data: {"mobilephone":"15229807575","pwd":"123456789123456789","regname":"lemo"}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+
+
+#服务器异常，系统提示报错
+- data: {"mobilephone":"15229807575","pwd":"123456"}
+  expect: {"code":20102,"data":{},"msg":"服务器异常","status":0}
+#不输入手机号时，登录失败
+- data: {"mobilephone":" ","pwd":"123456","regname":"lemo"}
+  expect: {"code":20103,"data":{},"msg":"参数错误：参数不能为空","status":0}
+#不输入密码时，登录失败
+- data: {"mobilephone":"15229807575","pwd":" ","regname":"lemo"}
+  expect: {"code":20103,"data":{},"msg":"参数错误：参数不能为空","status":0}
+#不输入手机号和密码时，登录失败
+- data: {"mobilephone":" ","pwd":" ","regname":"lemo"}
+  expect: {"code":20103,"data":{},"msg":"参数错误：参数不能为空","status":0}
+#手机号输入错误，登录失败
+- data: {"mobilephone":"15229807577","pwd":"123456","regname":"lemo"}
+  expect: {"code":20111,"data":{},"msg":"用户名或密码错误","status":0}
+#密码输入错误，登录失败
+- data: {"mobilephone":"15229807575","pwd":"123455","regname":"lemo"}
+  expect: {"code":20111,"data":{},"msg":"用户名或密码错误","status":0}
+#手机号和密码输入错误，登录失败
+- data: {"mobilephone":"15229807577","pwd":"123455","regname":"lemo"}
+  expect: {"code":20111,"data":{},"msg":"用户名或密码错误","status":0}
+#输入正确的手机号和密码，登录成功
+- data: {"mobilephone":"15229807575","pwd":"123456","regname":"lemo"}
+  expect: {"code":10001,"data":{},"msg":"登录成功","status":1}
+
+

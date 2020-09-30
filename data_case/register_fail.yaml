@@ -1,0 +1,33 @@
+#服务器异常，系统提示报错
+- data: {"mobilephone":"15229807878","pwd":"123456","regname":"lemo"}
+  expect: {"code":20110,"data":{},"msg":"手机号码已被注册","status":0}
+#不输入手机号时，注册失败
+- data: {"mobilephone":" ","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#不输入密码时，注册失败
+- data: {"mobilephone":"15229807878","pwd":" ","regname":"lemo"}
+  expect: {"code":20108,"data":{},"msg":"密码长度必须为6~18","status":0}
+#不输入手机号和密码时，注册失败
+- data: {"mobilephone":" ","pwd":" ","regname":"lemo"}
+  expect: {"code":20108,"data":{},"msg":"密码长度必须为6~18","status":0}
+#输入5位密码，注册失败
+- data: {"mobilephone":"15229807878","pwd":"12345","regname":"lemo"}
+  expect: {"code":20108,"data":{},"msg":"密码长度必须为6~18","status":0}
+#输入19位密码，注册失败
+- data: {"mobilephone":"15229807878","pwd":"1234567891234567890","regname":"lemo"}
+  expect: {"code":20108,"data":{},"msg":"密码长度必须为6~18","status":0}
+#输入10位手机号，注册失败
+- data: {"mobilephone":"1522980787","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#输入12位手机号，注册失败
+- data: {"mobilephone":"152298078789","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#输入包含特殊字符的手机号，注册失败
+- data: {"mobilephone":"1522980787*","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#输入不合法手机号，注册失败
+- data: {"mobilephone":"12345612345","pwd":"123456","regname":"lemo"}
+  expect: {"code":20109,"data":{},"msg":"手机号码格式不正确","status":0}
+#输入正确手机号和密码，注册失败
+- data: {"mobilephone":"15229807373","pwd":"123456","regname":"lemo"}
+  expect: {"code":20110,"data":{},"msg":"手机号码已被注册","status":0}

@@ -1,0 +1,25 @@
+#服务器异常，系统提示报错
+- data: {"mobilephone":"18944446666","pwd":"123456"}
+  expect: {"code":10001,"data":{},"msg":"登录成功","status":1}
+#不输入手机号时，登录失败
+- data: {"mobilephone":" ","pwd":"123456","regname":"struggle"}
+  expect: {"code":20103,"data":{},"msg":"手机号不能为空","status":0}
+#不输入密码时，登录失败
+- data: {"mobilephone":"18944446666","pwd":" ","regname":"struggle"}
+  expect: {"code":20103,"data":{},"msg":"密码不能为空","status":0}
+#不输入手机号和密码时，登录失败
+- data: {"mobilephone":" ","pwd":" ","regname":"struggle"}
+  expect: {"code":20103,"data":{},"msg":"手机号不能为空","status":0}
+#手机号输入错误，登录失败
+- data: {"mobilephone":"18944446667","pwd":"123456","regname":"struggle"}
+  expect: {"code":20111,"data":{},"msg":"用户名或密码错误","status":0}
+#密码输入错误，登录失败
+- data: {"mobilephone":"18944446666","pwd":"123455","regname":"struggle"}
+  expect: {"code":20111,"data":{},"msg":"用户名或密码错误","status":0}
+#手机号和密码输入错误，登录失败
+- data: {"mobilephone":"1894444666x","pwd":"123455","regname":"struggle"}
+  expect: {"code":20111,"data":{},"msg":"用户名或密码错误","status":0}
+
+#输入正确的手机号和密码，登录成功
+- data: {"mobilephone":"18944446666","pwd":"123456","regname":"struggle"}
+  expect: {"code":10001,"data":{},"msg":"登录成功","status":1}

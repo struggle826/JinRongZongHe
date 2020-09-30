@@ -1,0 +1,16 @@
+#输入正确的手机号和密码，输入超长昵称，注册失败
+- data: {"mobilephone":"15229807572","pwd":"123456","regname":"lemozxcvbnmasdfghjkl"}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+#输入正确的手机号和密码，输入昵称，注册成功
+- data: {"mobilephone":"15229807213","pwd":"123456","regname":"lemo"}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+#输入正确的手机号和密码，不输入昵称，注册成功
+- data: {"mobilephone":"15229807656","pwd":"123456","regname":" "}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+#输入正确的手机号，6位密码，注册成功
+- data: {"mobilephone":"15229807474","pwd":"123456","regname":"lemo"}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+#输入正确的手机号，18位密码，注册成功
+- data: {"mobilephone":"15229807575","pwd":"123456789123456789","regname":"lemo"}
+  expect: {"code":10001,"data":{},"msg":"注册成功","status":1}
+

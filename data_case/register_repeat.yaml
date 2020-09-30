@@ -1,0 +1,3 @@
+#输入注册过的手机号
+- data: {"mobilephone":"15229807474","pwd":"123456","regname":"lemo"}
+  expect: {"code":"20110","data":{},"msg":"手机号已被注册","status":"0"}
